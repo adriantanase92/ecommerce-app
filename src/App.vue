@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'auth-bg': $route.path == '/' }">
-    <v-app>
+    <v-app class="custom-font">
       <router-view />
     </v-app>
   </div>
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import './assets/style/main.scss';
+@import './assets/style/main.scss';
 </style>

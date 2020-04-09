@@ -1,8 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.v-application .headline,
+.v-application .display-1,
+.v-application .subtitle-1 {
+    font-family: 'Roboto Slab', serif !important;
+}
+
+.v-application--is-ltr .v-input__prepend-outer {
+    margin-right: 14px;
+}
+
+.v-icon.v-icon {
+    font-size: 20px;
+}
+
+.theme--light.v-application {
+    background: transparent;
+}
+
+.theme--light.v-icon {
+    color: #495057;
+}
+
+.pt-13 {
+    padding-top: 72px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
 .auth-bg {
     background: url('~@/assets/images/auth/auth-bg.jpg') no-repeat center center;
     background-size: cover;
 }
 
-.theme--light.v-application {
-    background: transparent;
+.authentication {
+    @include transition(all 500ms ease-in-out);
+
+    &-login-form, &-register-form {
+        background-color: #ffffff;
+        width: 90%;
+        position: relative;
+        @include border-radius(8px);
+    }
+
+    &-login-form {
+        padding: 72px 24px 30px;
+        max-width: 360px;
+    }
+
+    &-register-form {
+        padding: 48px 24px 48px;
+        max-width: 460px;
+    }
+
+    &-title {
+        position: absolute;
+        top: -36px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 86%;
+        background-image: linear-gradient(to right, #a946bb , #7d20a3);
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        @include border-radius(4px);
+        @include box-shadow(0px 4px 22px rgba(120, 29, 158, 0.78));
+    }
+
+}
+
+.page {
+    width: 98%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.product {
+    padding: 0.5rem 1rem;
+    @include border-radius(5px);
 }
