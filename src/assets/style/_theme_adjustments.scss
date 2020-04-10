@@ -1,0 +1,40 @@
+.v-application .headline,
+.v-application .display-1,
+.v-application .subtitle-1 {
+    font-family: 'Roboto Slab', serif !important;
+}
+
+.theme--dark.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    color: $white !important;
+}
+
+.theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+    background-color: $grey2 !important;
+}
+
+.v-application--is-ltr .v-input__prepend-outer {
+    margin-right: 14px;
+}
+
+.v-icon.v-icon {
+    font-size: 20px;
+}
+
+.theme--light.v-application {
+    background: transparent;
+}
+
+.theme--light.v-icon {
+    color: $grey3;
+}
+
+.v-dialog {
+    background-color: $white;
+    overflow-x: hidden;
+    border: 10px solid $black;
+}
+
+.v-dialog,
+.v-card:not(.v-sheet--tile):not(.v-card--shaped) {
+    @include border-radius(0);
+}

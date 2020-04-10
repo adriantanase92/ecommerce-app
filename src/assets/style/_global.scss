@@ -1,47 +1,10 @@
+// General - Start
 * {
     box-sizing: border-box;
 }
 
 body {
     background-color: $grey1;
-}
-
-.v-application .headline,
-.v-application .display-1,
-.v-application .subtitle-1 {
-    font-family: 'Roboto Slab', serif !important;
-}
-
-.theme--dark.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    color: $white !important;
-}
-
-.theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: $grey2 !important;
-}
-
-.v-application--is-ltr .v-input__prepend-outer {
-    margin-right: 14px;
-}
-
-.v-icon.v-icon {
-    font-size: 20px;
-}
-
-.theme--light.v-application {
-    background: transparent;
-}
-
-.theme--light.v-icon {
-    color: $grey3;
-}
-
-.pt-13 {
-    padding-top: 72px;
-}
-
-.cursor-pointer {
-    cursor: pointer;
 }
 
 a {
@@ -58,14 +21,56 @@ img {
     margin: 0 auto;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pt-13 {
+    padding-top: 72px;
+}
+// General - End
+
+// Product - Start
 .product {
     padding: 0.5rem 1rem;
     @include border-radius(5px);
 
     .product-img {
+        line-height: 0;
 
+        img {
+            
+        }
     }
 }
+
+.product-modal {
+    position: relative;
+
+    &-cancel-icon {
+        cursor: pointer;
+        font-weight: 900;
+        font-size: 28px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 0px 14px;
+    }
+
+    &-price {
+        margin-bottom: 30px;
+        font-family: "Roboto Slab", serif !important;
+        font-weight: 400;
+        font-size: 22px;       
+    }
+
+    &-description-title {
+        padding-bottom: 2px;
+        border-bottom: 1px solid $grey4;
+        margin-bottom: 10px;
+    }
+}
+// Product - End
 
 .auth-bg {
     background: url('~@/assets/images/auth/auth-bg.jpg') no-repeat center center;
