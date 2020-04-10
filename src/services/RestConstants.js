@@ -1,5 +1,5 @@
 export default {
     LOGIN: 'login',
-    REGISTER: 'api/register/',
-    PRODUCTS: 'api/products/',
+    REGISTER: 'register',
+    PRODUCTS: 'products',
 };

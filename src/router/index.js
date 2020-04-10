@@ -10,4 +10,31 @@ const router = new VueRouter({
   routes: RouterService.getRoutes()
 })
 
+router.beforeEach((to, from, next) => {
+  let publicRoutes = [
+    'auth'
+  ];
+
+  if(publicRoutes.indexOf(to.name) == -1 && !localStorage.getItem('user-token')) {
+    
+    next('/');
+  } else {
+
+    if(!from.name || to.name == 'products' || to.name == 'auth'){
+      let token = localStorage.getItem('user-token');
+
+      if(to.name === 'auth' && token){
+        return next('/products');
+      }
+      else{
+        return next();
+      }
+    }
+
+    if(from.name === to.name){
+      return next();
+    }  
+  }
+});
+
 export default router
