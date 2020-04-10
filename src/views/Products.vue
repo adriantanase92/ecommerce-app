@@ -1,13 +1,13 @@
 <template>
   <div class="page">
     <div class="products">
-      <v-container class="products-list py-10">
+      <v-container class="products-list pt-12 pb-8 mt-10">
         <v-row v-if="this.products" align="center" align-content="center">
           <v-col 
             v-for="product in this.products" 
             v-bind:data="product" 
             v-bind:key="product.id" 
-            cols="12" sm="6" md="3">
+            cols="12" sm="6" md="4" lg="3">
             <v-card class="product elevation-1" outlined tile>
               <div class="product-img"><img v-bind:src="product.picture"></div>
               <h3 class="text-center subtitle-1 mb-8">{{ product.name }}</h3>
