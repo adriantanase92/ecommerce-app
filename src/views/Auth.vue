@@ -259,8 +259,6 @@
                     terms: this.userRegister.tcCheck,
                 }
 
-                // // console.log(newUser);
-
                 AuthService.registerUser(newUser)
                 .then(result => {
                     console.log('User registered succesfully');

@@ -29,13 +29,13 @@
     color: $grey3;
 }
 
-.v-dialog {
+.products .v-dialog {
     background-color: $white;
     overflow-x: hidden;
     border: 10px solid $black;
 }
 
-.v-dialog,
-.v-card:not(.v-sheet--tile):not(.v-card--shaped) {
+.products .v-dialog,
+.products .v-card:not(.v-sheet--tile):not(.v-card--shaped) {
     @include border-radius(0);
 }

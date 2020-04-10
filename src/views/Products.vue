@@ -34,25 +34,25 @@
       <div class="product-modal">
         <v-container>
           <v-row align="center" align-content="center">
-            <v-col cols="12" sm="6">
+            <v-col cols="12" md="6" class="text-center">
               <img v-bind:src="productPicture" class="product-modal-img">
             </v-col>
-            <v-col cols="12" sm="6">
-              <div class="pr-6">
+            <v-col cols="12" md="6">
+              <div :class="{'pr-6': $vuetify.breakpoint.mdAndUp}">
                 <div class="display-1 font-weight-bold mb-2">{{ productName }}</div>
                 <div class="product-modal-price grey--text">${{ productPrice }}</div>
                 <div class="caption mb-10">
                   <div class="product-modal-description-title primary--text">Description</div>
                   <div class="grey--text text--darken-1">{{ productDescription }}</div>
                 </div>
-                <v-btn color="primary" rounded small>Add to cart <i class="fas fa-shopping-cart ml-2"></i></v-btn>
+                <div :class="{'text-right':$vuetify.breakpoint.smAndDown}"><v-btn color="primary" rounded small>Add to cart <i class="fas fa-shopping-cart ml-2"></i></v-btn></div>
               </div>
             </v-col>
           </v-row>
         </v-container>
-        <button @click="closeModal" class="product-modal-cancel-icon">x</button>
+        <button @click="closeModal" class="product-modal-cancel-icon"><i class="fas fa-times"></i></button>
       </div>
-    </v-dialog>    
+    </v-dialog> 
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
         this.onGetProducts();
     },  
     methods: {
-        onGetProducts: function () {
+        onGetProducts() {
             Products.getProducts()
                 .then(result => {
                     this.products = result.data;
