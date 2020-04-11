@@ -71,15 +71,16 @@
                                         width="290px"
                                     >
                                         <template v-slot:activator="{ on }">
-                                        <v-text-field
-                                            v-model="userRegister.educationStartDate"
-                                            :error-messages="errors"
-                                            label="Education Start Date"
-                                            prepend-icon="far fa-calendar"
-                                            readonly
-                                            v-on="on"
-                                            class="mb-5"
-                                        ></v-text-field>
+                                            <v-text-field
+                                                v-model="userRegister.educationStartDate"
+                                                :error-messages="errors"
+                                                label="Education Start Date"
+                                                prepend-icon="far fa-calendar"
+                                                readonly
+                                                v-on="on"
+                                                class="mb-5"
+                                                :disabled="toggleDisable1"
+                                            ></v-text-field>
                                         </template>
                                         <v-date-picker :min="minDate" v-model="date1" color="primary" header-color="secondary" scrollable>
                                         <v-spacer></v-spacer>
@@ -96,18 +97,19 @@
                                         width="290px"
                                     >
                                         <template v-slot:activator="{ on }">
-                                        <v-text-field
-                                            v-model="userRegister.educationEndDate"
-                                            :error-messages="errors"
-                                            label="Education End Date"
-                                            prepend-icon="far fa-calendar"
-                                            readonly
-                                            v-on="on"
-                                            class="mb-5"
-                                        ></v-text-field>
-                                        <!-- :disabled="toggleDisable" -->
+                                            <v-text-field
+                                                v-model="userRegister.educationEndDate"
+                                                :error-messages="errors"
+                                                label="Education End Date"
+                                                prepend-icon="far fa-calendar"
+                                                readonly
+                                                v-on="on"
+                                                class="mb-5"
+                                                :disabled="toggleDisable2"
+                                            ></v-text-field>
                                         </template>
-                                        <v-date-picker :min="userRegister.educationStartDate" v-model="date2" color="primary" header-color="secondary" scrollable>
+                                        <!-- <v-date-picker :min="userRegister.educationStartDate" v-model="date2" color="primary" header-color="secondary" scrollable> -->
+                                        <v-date-picker :min="nextDay(userRegister.educationStartDate)" v-model="date2" color="primary" header-color="secondary" scrollable>
                                         <v-spacer></v-spacer>
                                         <v-btn text color="primary" @click="$refs.date2.save(date2)">OK</v-btn>
                                         </v-date-picker>
@@ -166,6 +168,7 @@
     import AuthService from '../services/AuthService'
     import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
     import { required, email, min, confirmed } from 'vee-validate/dist/rules'
+    import * as moment from 'moment'
 
     setInteractionMode('eager')
 
@@ -214,7 +217,8 @@
                 },
                 date1: new Date().toISOString().substr(0, 10),
                 date2: '',
-                toggleDisable: true,
+                toggleDisable1: false,
+                toggleDisable2: true,
                 isPasswordVisible: false,
                 dictionary: null
             }
@@ -226,13 +230,27 @@
         }, 
         watch: {
             'userRegister.educationStartDate': function(newVal, oldVal) {
-                console.log('value changed from ' + oldVal + ' to ' + newVal);
-            }
+                if(newVal !== null) {
+                    this.toggleDisable2 = false;
+                }
+            },
+            'userRegister.educationEndDate': function(newVal, oldVal) {
+                if(newVal !== null) {
+                    this.toggleDisable1 = true;
+                }
+            }            
         },
         methods: {
             showForm() {
                 this.switchForm = !this.switchForm;
                 return this.switchForm;
+            },
+            nextDay(date) {
+                if(date) {
+                    let day = moment(date, 'YYYY-MM-DD');
+                    let nextDay = moment(day, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+                    return nextDay;
+                }
             },
             login() {
                 let user = {
@@ -259,7 +277,6 @@
 
                 AuthService.registerUser(newUser)
                 .then(result => {
-                    console.log('User registered succesfully');
                     this.$router.push({
                         name: Constants.ROUTES.AUTH
                     });

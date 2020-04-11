@@ -22,6 +22,7 @@
             </v-card>
           </v-col>
         </v-row> 
+        <div class="text-center" v-else><v-progress-circular indeterminate color="primary" class="bottom" /></div>
       </v-container>
     </div>
 
@@ -81,7 +82,6 @@ export default {
             Products.getProducts()
                 .then(result => {
                     this.products = result.data;
-                    console.log(result.data);
                 })                
                 .catch(function(error) {
                     console.error(error);

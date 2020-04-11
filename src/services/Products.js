@@ -1,5 +1,6 @@
 import HttpService from './HttpService';
 import RestConstants from './RestConstants';
+import Utils from './Utils';
 
 export default {
   getProducts() {
@@ -7,9 +8,7 @@ export default {
     return new Promise(function(resolve, reject) {
       HttpService.get(RestConstants.PRODUCTS, token)
         .then(result => resolve(result))
-        .catch(err => {
-          return reject(err);
-        });
+        .catch(Utils.handleErros)
     });
   },
 }

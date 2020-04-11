@@ -1,8 +1,9 @@
 import HttpService from './HttpService';
 import RestConstants from './RestConstants';
+import Utils from './Utils';
 
 export default {
-    registerUser: function (user) {
+    registerUser(user) {
         return new Promise(function (resolve, reject) {
             HttpService.post(RestConstants.REGISTER, user)
                 .then(result => {
@@ -10,24 +11,19 @@ export default {
                         return resolve(result);
                     }
                 })
-                .catch(function(error) {
-                    console.error(error);
-                });
+                .catch(Utils.handleErros)
         });
-    },    
-    login: function (user) {
+    },
+    login(user) {
         return new Promise(function (resolve, reject) {
             HttpService.post(RestConstants.LOGIN, user)
                 .then(result => {
                     if (result.status === 200) {
                         localStorage.setItem('user-token', result.data.accessToken);
                         return resolve(result);
-                      }
+                    }
                 })
-                .catch(err => {
-                    localStorage.removeItem('user-token');
-                    return reject(err);
-                });
+                .catch(Utils.handleErros)
         });
     }
 };
