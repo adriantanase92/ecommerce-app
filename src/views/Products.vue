@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import Constants from '../services/Constants';
-import Products from '../services/Products';
+import Constants from '../services/Constants'
+import Products from '../services/Products'
 
 export default {
   name: 'products',
