@@ -82,10 +82,12 @@ export default {
             Products.getProducts()
                 .then(result => {
                     this.products = result.data;
-                })                
-                .catch(function(error) {
-                    console.error(error);
-                }); 
+                }) 
+                .catch(error => {
+                  if(error) {
+                    console.log(error.message);
+                  }
+                });
         },
         showModal(name, price, description, picture) {
             this.productName = name;
