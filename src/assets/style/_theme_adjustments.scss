@@ -29,13 +29,10 @@
     color: $grey3;
 }
 
-.products .v-dialog {
+.custom-container .v-dialog,
+.custom-container .v-card:not(.v-sheet--tile):not(.v-card--shaped) {
+    @include border-radius(0);
     background-color: $white;
     overflow-x: hidden;
-    border: 10px solid $black;
-}
-
-.products .v-dialog,
-.products .v-card:not(.v-sheet--tile):not(.v-card--shaped) {
-    @include border-radius(0);
+    border: 10px solid $black;   
 }

@@ -102,6 +102,9 @@ img {
 
 .product-modal {
     position: relative;
+    background-color: $white;
+    overflow-x: hidden;
+    @include border-radius(0);    
 
     &-cancel-icon {
         cursor: pointer;
