@@ -108,7 +108,6 @@
                                                 :disabled="toggleDisable2"
                                             ></v-text-field>
                                         </template>
-                                        <!-- <v-date-picker :min="userRegister.educationStartDate" v-model="date2" color="primary" header-color="secondary" scrollable> -->
                                         <v-date-picker :min="nextDay(userRegister.educationStartDate)" v-model="date2" color="primary" header-color="secondary" scrollable>
                                         <v-spacer></v-spacer>
                                         <v-btn text color="primary" @click="$refs.date2.save(date2)">OK</v-btn>
@@ -278,7 +277,7 @@
                 AuthService.registerUser(newUser)
                 .then(result => {
                     this.$router.push({
-                        name: Constants.ROUTES.AUTH
+                        name: Constants.ROUTES.PRODUCTS
                     });
                 })
                 .catch(function(error) {

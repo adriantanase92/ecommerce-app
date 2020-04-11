@@ -8,10 +8,17 @@ export default {
             HttpService.post(RestConstants.REGISTER, user)
                 .then(result => {
                     if (result.status === 200) {
+                        localStorage.setItem('user-token', result.data.accessToken);
                         return resolve(result);
                     }
                 })
-                .catch(Utils.handleErros)
+                .catch(error => {
+                    if(error.response.status === 422){
+                        window.alert(error.response.data.errors.email[0]);
+                    } else {
+                        console.log(error);
+                    }
+                });               
         });
     },
     login(user) {
