@@ -16,17 +16,14 @@ router.beforeEach((to, from, next) => {
   ];
 
   if(publicRoutes.indexOf(to.name) == -1 && !localStorage.getItem('user-token')) {
-    
     next('/');
   } else {
-
     if(!from.name || to.name == 'products' || to.name == 'auth'){
       let token = localStorage.getItem('user-token');
 
       if(to.name === 'auth' && token){
         return next('/products');
-      }
-      else{
+      } else {
         return next();
       }
     }
